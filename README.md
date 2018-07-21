@@ -18,6 +18,7 @@
 `npm install vue-quick-loadmore -S`
 
 ```
+// 推荐引入方式
 // 使用vue-cli webpack时在main.js中引入
 import Vue from 'vue';
 import VueQuickLoadmore from 'vue-quick-loadmore';
@@ -25,6 +26,7 @@ import VueQuickLoadmore from 'vue-quick-loadmore';
 Vue.use(VueQuickLoadmore)
 ```
 ```
+// 不推荐引用方式
 // 直接引用打包之后的版本，不推荐使用，推荐使用上面的方法引入
 import Vue from 'vue';
 // 注意引用的是 vue-quick-loadmore下的index.js

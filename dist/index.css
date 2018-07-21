@@ -1,0 +1,23 @@
+
+.vsim-load[data-v-44ea29] {
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.vsim-load-header[data-v-44ea29] {
+  margin-top: -50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: -0.31px;
+}
+.vsim-load-footer[data-v-44ea29] {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 13px;
+  color: #666666;
+  letter-spacing: -0.31px;
+}

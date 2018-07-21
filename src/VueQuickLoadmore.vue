@@ -1,20 +1,20 @@
 <!--  -->
 <template>
-    <div class="vsim-load" @scroll.passive="handleScroll" :style="{overflow:bottomOverflow}">
-        <div class="vsim-load-content" ref="content">
-            <slot name="top">
-                <div class="vsim-load-header">
-                    <div>{{topText}}</div>
-                </div>
-            </slot>
-            <slot></slot>
-            <slot name="bottom">
-                <div class="vsim-load-footer">
-                    <div>{{bottomText}}</div>
-                </div>
-            </slot>
+  <div class="vsim-load" @scroll.passive="handleScroll" :style="{overflow:bottomOverflow}">
+    <div class="vsim-load-content" ref="content">
+      <slot name="top">
+        <div class="vsim-load-header">
+          <div>{{topText}}</div>
         </div>
+      </slot>
+      <slot></slot>
+      <slot name="bottom">
+        <div class="vsim-load-footer">
+          <div>{{bottomText}}</div>
+        </div>
+      </slot>
     </div>
+  </div>
 </template>
 
 <script>
@@ -104,7 +104,7 @@ export default {
       endScreenY: 0,
       topStatus: TOPSTATUS.wait, // 'wait'等待 , 'pulling'下拉,'limit'超过topDistance触发,'loading'正在loading
       bottomOverflow: "auto",
-      bottomStatus: BOTTOMSTATUS.wait,
+      bottomStatus: BOTTOMSTATUS.wait
     };
   },
 
@@ -159,7 +159,7 @@ export default {
       if (this.bottomStatus !== BOTTOMSTATUS.wait) {
         return;
       }
-      
+
       let bDistance =
         this.$el.scrollHeight - this.$el.scrollTop - this.$el.clientHeight;
       if (bDistance <= this.bottomDistance) {
@@ -170,7 +170,6 @@ export default {
         });
         this.bottomMethod();
       }
-      
     },
     // 获得滚动距离
     getScrollTop() {
@@ -243,6 +242,13 @@ export default {
         this.$refs.content.getBoundingClientRect().top < this.startPositionTop
       ) {
         return;
+      }
+      if (
+        this.topStatus === TOPSTATUS.pulling ||
+        this.topStatus === TOPSTATUS.limit
+      ) {
+        e.stopPropagation();
+        e.preventDefault();
       }
       if (this.topStatus === "loading") {
         return;

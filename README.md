@@ -18,6 +18,7 @@
 `npm install vue-quick-loadmore -S`
 
 ```
+// 推荐引入方式
 // 使用vue-cli webpack时在main.js中引入
 import Vue from 'vue';
 import VueQuickLoadmore from 'vue-quick-loadmore';
@@ -25,6 +26,7 @@ import VueQuickLoadmore from 'vue-quick-loadmore';
 Vue.use(VueQuickLoadmore)
 ```
 ```
+// 不推荐引用方式
 // 直接引用打包之后的版本，不推荐使用，推荐使用上面的方法引入
 import Vue from 'vue';
 // 注意引用的是 vue-quick-loadmore下的index.js
@@ -40,9 +42,14 @@ Vue.use(VueQuickLoadmore)
 <template>
     <div id="app">
     <!-- 注意：quick-loadmore要求外面包裹容器(本例#app)
-    的高度固定且overflow:hidden,并且quick-loadmore内部数据的高度要大于包裹容器的高度,才能触发quick-loadmore的上拉刷新功能 -->
-        <quick-loadmore :top-method="handleTop" ref="vueLoad" :top-status-change="handleStatusChange" :bottom-method="handleBottom" :bottom-status-change="handleBottomStatusChange" :disable-top="false" :disable-bottom="false">
-            <div class="item" v-for="(item,index) in        dataList" :key="index">{{index}}</div>
+    的高度固定且overflow:hidden,并且quick-loadmore内部数据的高度要大于包裹容器的高度,
+    才能触发quick-loadmore的上拉刷新功能 -->
+        <quick-loadmore :top-method="handleTop" ref="vueLoad" 
+                        :top-status-change="handleStatusChange" 
+                        :bottom-method="handleBottom" 
+                        :bottom-status-change="handleBottomStatusChange" 
+                        :disable-top="false" :disable-bottom="false">
+            <div class="item" v-for="(item,index) in dataList" :key="index">{{index}}</div>
         </quick-loadmore>
     </div>
 </template>
@@ -86,9 +93,11 @@ export default {
   methods: {
     handleTop() {
       // 下拉刷新  
+      // 定时器用来模拟下拉刷新接口延迟时间
       setTimeout(() => {
+         // 模拟数据更新
         this.dataList = [1, 2, 3, 4, 5];
-        // 刷新成功调用
+        // 数据跟新完调用该方法使quick-loadmore滚到顶部
         this.$refs.vueLoad.onTopLoaded();
       }, 1000);
     },
@@ -113,9 +122,11 @@ export default {
     },
     handleBottom() {
       // 上拉加载
+      // 定时器用来模拟上拉加载接口延迟时间
       setTimeout(() => {
+      // 模拟数据更新
         this.dataList.push(1, 2, 3);
-        // 加载完毕调用函数(如果没有更多数据参数传false)
+        // 数据跟新完调用该方法使数据加载中提示消失，(注意:如果没有更多数据参数传false)
         this.$refs.vueLoad.onBottomLoaded();
       }, 1000);
     }
@@ -185,6 +196,7 @@ ref.setScroolTop(y)|Function|设置滚动距离|具体见示例代码
 ---
 版本号|说明|
 :--:|:--:|
+0.0.5|更新文档
 0.0.4|解决命令行报错问题
 0.0.3|用vue-cli时命令行会报警告，不影响正常使用，以后修复。
 0.0.2|更新文档

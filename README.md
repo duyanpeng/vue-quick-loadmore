@@ -1,4 +1,4 @@
-# vue-simple-picker
+# vue-quick-loadmore
 [![Build Status](https://travis-ci.org/duyanpeng/vue-simple-picker.svg?branch=master)](https://travis-ci.org/duyanpeng/vue-simple-picker)
 ![Read the Docs](https://img.shields.io/readthedocs/pip.svg)
 
@@ -135,7 +135,7 @@ html,body,#app{
 :--:|:--:|:--:|:--:
 v-bind:disableTop|Boolean|禁止下拉刷新|默认:false
 v-bind:distanceIndex|Number|手指滑动与页面滑动比例|默认:2
-v-bind:topLoadingDistance|Number|loading状态时页面距顶部距离|默认：50
+v-bind:topLoadingDistance|Number|loading状态时页面距顶部距离|默认：50
 v-bind:topDistance|Number|下拉刷新触发值|默认:100
 v-on:topMethod|Function|下拉刷新触发方法|
 v-on:topStatusChange|Function|下拉刷新状态改变回调|四种状态具体见示例代码

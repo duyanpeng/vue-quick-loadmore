@@ -91,9 +91,11 @@ export default {
   methods: {
     handleTop() {
       // 下拉刷新  
+      // 定时器用来模拟下拉刷新接口延迟时间
       setTimeout(() => {
+         // 模拟数据更新
         this.dataList = [1, 2, 3, 4, 5];
-        // 刷新成功调用
+        // 数据跟新完调用该方法使quick-loadmore滚到顶部
         this.$refs.vueLoad.onTopLoaded();
       }, 1000);
     },
@@ -118,9 +120,11 @@ export default {
     },
     handleBottom() {
       // 上拉加载
+      // 定时器用来模拟上拉加载接口延迟时间
       setTimeout(() => {
+      // 模拟数据更新
         this.dataList.push(1, 2, 3);
-        // 加载完毕调用函数(如果没有更多数据参数传false)
+        // 数据跟新完调用该方法使数据加载中提示消失，(注意:如果没有更多数据参数传false)
         this.$refs.vueLoad.onBottomLoaded();
       }, 1000);
     }

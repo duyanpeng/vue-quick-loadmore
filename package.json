@@ -1,6 +1,6 @@
 {
   "name": "vue-quick-loadmore",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "基于vue的移动端下拉刷新上拉无限滚动加载的高度定制化插件",
   "main": "dist/index.js",
   "scripts": {

@@ -437,8 +437,10 @@ var _VueQuickLoadmore2 = _interopRequireDefault(_VueQuickLoadmore);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function (Vue) {
-    Vue.component('quick-loadmore', _VueQuickLoadmore2.default);
+exports.default = {
+    install: function install(Vue) {
+        Vue.component('quick-loadmore', _VueQuickLoadmore2.default);
+    }
 };
 },{"./src/VueQuickLoadmore.vue":"Gqfg"}]},{},["Focm"], null)
 //# sourceMappingURL=/index.map

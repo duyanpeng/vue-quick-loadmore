@@ -1,6 +1,8 @@
 
 import VueQuickLoadmore from './src/VueQuickLoadmore.vue';
 
-export default (Vue) => {
-    Vue.component('quick-loadmore', VueQuickLoadmore)
+export default {
+    install(Vue){
+        Vue.component('quick-loadmore', VueQuickLoadmore)
+    }
 }

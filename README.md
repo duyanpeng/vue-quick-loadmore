@@ -4,7 +4,7 @@
 
 基于vue的移动端下拉刷新上拉无限滚动加载的高度定制化插件
 
-<img src="./static/zhengzaishuaxin.jpg" width="200"/>
+<img src="./static/xialashuaxin.jpg" width="200"/>
 <img src="./static/shifangshuaxin.jpg" width="200"/>
 <img src="./static/zhengzaishuaxin.jpg" width="200"/>
 <img src="./static/shanglajiazai.jpg" width="200"/>

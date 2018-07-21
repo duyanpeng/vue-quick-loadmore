@@ -99,7 +99,7 @@ export default {
       console.log(status, "bottomchange");
     },
     handleBottom() {
-      // 上拉加载
+      // 上拉加载
       setTimeout(() => {
         this.dataList.push(1, 2, 3);
         // 加载完毕调用函数(如果没有更多数据参数传false)
@@ -129,11 +129,11 @@ html,body,#app{
 }
 ```
 
-## 下拉刷新配置
+## 下拉刷新配置
 ---
-参数|类型|说明|备注
+参数|类型|说明|备注
 :--:|:--:|:--:|:--:
-v-bind:disableTop|Boolean|禁止下拉刷新|默认:false
+v-bind:disableTop|Boolean|禁止下拉刷新|默认:false
 v-bind:distanceIndex|Number|手指滑动与页面滑动比例|默认:2
 v-bind:topLoadingDistance|Number|loading状态时页面距顶部距离|默认：50
 v-bind:topDistance|Number|下拉刷新触发值|默认:100
@@ -141,20 +141,20 @@ v-on:topMethod|Function|下拉刷新触发方法|
 v-on:topStatusChange|Function|下拉刷新状态改变回调|四种状态具体见示例代码
 ref.onTopLoaded|Function|下拉刷新完成时调用函数|通过ref使用具体见示例代码
 ---
-### 上拉加载配置:
-参数|类型|说明|备注
+### 上拉加载配置:
+参数|类型|说明|备注
 :--:|:--:|:--:|:--:
-v-bind:disableBttom|Boolean|禁止上拉加载|默认:false
+v-bind:disableBttom|Boolean|禁止上拉加载|默认:false
 v-bind:bottomDistance|Number|上拉加载触发值|默认:10
 v-on:bottomMethod|Function|上拉加载触发方法|
 v-on:bottomStatusChange|Function|上拉加载状态改变回调|三种状态具体见示例代码
-ref.onBottomLoaded(boolean = true)|Function|上拉加载完成时调用函数|通过ref使用具体见示例代码(注意：如果下拉加载之后是无更多数据状态,函数传参为false,此后不在触发上拉刷新方法,下拉刷新之后会自动开启上拉加载)
+ref.onBottomLoaded(boolean = true)|Function|上拉加载完成时调用函数|通过ref使用具体见示例代码(注意：如果下拉加载之后是无更多数据状态,函数传参为false,此后不在触发上拉刷新方法,下拉刷新之后会自动开启上拉加载)
 ---
-### 其他配置:
-参数|类型|说明|备注
+### 其他配置:
+参数|类型|说明|备注
 :--:|:--:|:--:|:--:
 ref.getScrollTop|Function|获得滚动距离|具体见示例代码
-ref.setScroolTop(y)|Function|设置滚动距离|具体见示例代码
+ref.setScroolTop(y)|Function|设置滚动距离|具体见示例代码
 ---
 ### 替换下拉刷新下拉加载loading图方法:
 
@@ -170,7 +170,7 @@ ref.setScroolTop(y)|Function|设置滚动距离|具体见示例代码
 
 ## 版本更新说明
 ---
-版本号|说明|
+版本号|说明|
 :--:|:--:|
 
 0.0.1|项目初始化

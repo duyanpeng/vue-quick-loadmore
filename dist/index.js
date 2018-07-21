@@ -353,6 +353,10 @@ exports.default = {
       if (this.$refs.content.getBoundingClientRect().top < this.startPositionTop) {
         return;
       }
+      if (this.topStatus === TOPSTATUS.pulling || this.topStatus === TOPSTATUS.limit) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
       if (this.topStatus === "loading") {
         return;
       }

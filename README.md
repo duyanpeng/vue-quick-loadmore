@@ -20,15 +20,15 @@
 ```
 // 使用vue-cli webpack时在main.js中引入
 import Vue from 'vue';
-// 注意引用的是 vue-quick-loadmore下的index.js 因为index.js是未打包编译版，直接引用parcel打包之后的版本命令行会有警告(不影响使用)，待以后解决
-import VueQuickLoadmore from 'vue-quick-loadmore/index.js';
+import VueQuickLoadmore from 'vue-quick-loadmore';
 
 Vue.use(VueQuickLoadmore)
 ```
 ```
 // 直接引用打包之后的版本，不推荐使用，推荐使用上面的方法引入
 import Vue from 'vue';
-import VueQuickLoadmore from 'vue-quick-loadmore';
+// 注意引用的是 vue-quick-loadmore下的index.js
+import VueQuickLoadmore from 'vue-quick-loadmore/dist/index.js';
 import 'vue-quick-loadmore/dist/index.css';  // 引入插件相关的css
 
 Vue.use(VueQuickLoadmore)

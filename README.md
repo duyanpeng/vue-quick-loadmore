@@ -39,6 +39,8 @@ Vue.use(VueQuickLoadmore)
 ```html
 <template>
     <div id="app">
+    <!-- 注意：quick-loadmore要求外面包裹容器(本例#app)
+    的高度固定且overflow:hidden,并且quick-loadmore内部数据的高度要大于包裹容器的高度,才能触发quick-loadmore的上拉刷新功能 -->
         <quick-loadmore :top-method="handleTop" ref="vueLoad" :top-status-change="handleStatusChange" :bottom-method="handleBottom" :bottom-status-change="handleBottomStatusChange" :disable-top="false" :disable-bottom="false">
             <div class="item" v-for="(item,index) in        dataList" :key="index">{{index}}</div>
         </quick-loadmore>

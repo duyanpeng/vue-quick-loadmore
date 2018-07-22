@@ -64,7 +64,7 @@ export default {
   },
   // 实现进入详情页返回列表位置功能-搭配keep-alive
   beforeRouteLeave(to, from, next) {
-    // 进入详情
+    // 如果进入详情页
     if (to.name === "MessageDetail") {
         // 获得滚动距离
       let scrollTop = this.$refs.vueLoad.getScrollTop();

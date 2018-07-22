@@ -27,9 +27,9 @@ Vue.use(VueQuickLoadmore)
 ```
 ```
 // 不推荐引用方式
-// 直接引用打包之后的版本，不推荐使用，推荐使用上面的方法引入
+// 未使用webpack时直接引用打包之后的版本，不推荐使用，推荐建议使用vue-cli的webpack方式进行打包处理
 import Vue from 'vue';
-// 注意引用的是 vue-quick-loadmore下的index.js
+// 注意引用的是 vue-quick-loadmore/dist下的index.js
 import VueQuickLoadmore from 'vue-quick-loadmore/dist/index.js';
 import 'vue-quick-loadmore/dist/index.css';  // 引入插件相关的css
 

@@ -6,11 +6,7 @@
 
 默认样式：可自定义更改添加loading图,自定义修改文案
 
-<img src="./static/xialashuaxin.jpg" width="200"/>
-<img src="./static/shifangshuaxin.jpg" width="200"/>
-<img src="./static/zhengzaishuaxin.jpg" width="200"/>
-<img src="./static/shanglajiazai.jpg" width="200"/>
-<img src="./static/wugengduoshuju.jpg" width="200"/>
+![xiaoguozhanshi](./static/loadmoregif.gif)
 
 
 ## 安装

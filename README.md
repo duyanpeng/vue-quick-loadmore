@@ -23,9 +23,9 @@ Vue.use(VueQuickLoadmore)
 ```
 ```
 // 不推荐引用方式
-// 直接引用打包之后的版本，不推荐使用，推荐使用上面的方法引入
+// 未使用webpack时直接引用打包之后的版本，不推荐使用，推荐建议使用vue-cli的webpack方式进行打包处理
 import Vue from 'vue';
-// 注意引用的是 vue-quick-loadmore下的index.js
+// 注意引用的是 vue-quick-loadmore/dist下的index.js
 import VueQuickLoadmore from 'vue-quick-loadmore/dist/index.js';
 import 'vue-quick-loadmore/dist/index.css';  // 引入插件相关的css
 
@@ -39,7 +39,7 @@ Vue.use(VueQuickLoadmore)
     <div id="app">
     <!-- 注意：quick-loadmore要求外面包裹容器(本例#app)
     的高度固定且overflow:hidden,并且quick-loadmore内部数据的高度要大于包裹容器的高度,
-    才能触发quick-loadmore的上拉刷新功能 -->
+    才能触发quick-loadmore的上拉加载功能 -->
         <quick-loadmore :top-method="handleTop" ref="vueLoad" 
                         :top-status-change="handleStatusChange" 
                         :bottom-method="handleBottom" 
@@ -60,7 +60,7 @@ export default {
   },
   // 实现进入详情页返回列表位置功能-搭配keep-alive
   beforeRouteLeave(to, from, next) {
-    // 进入详情
+    // 如果进入详情页
     if (to.name === "MessageDetail") {
         // 获得滚动距离
       let scrollTop = this.$refs.vueLoad.getScrollTop();
@@ -122,7 +122,7 @@ export default {
       setTimeout(() => {
       // 模拟数据更新
         this.dataList.push(1, 2, 3);
-        // 数据跟新完调用该方法使数据加载中提示消失，(注意:如果没有更多数据参数传false)
+        // 数据跟新完调用该方法使数据加载中提示消失，(注意:如果没有更多数据参数传false: this.$refs.vueLoad.onBottomLoaded(false))
         this.$refs.vueLoad.onBottomLoaded();
       }, 1000);
     }
@@ -149,7 +149,7 @@ html,body,#app{
 }
 ```
 
-## 下拉刷新配置
+### 下拉刷新配置
 ---
 参数|类型|说明|备注
 :--:|:--:|:--:|:--:

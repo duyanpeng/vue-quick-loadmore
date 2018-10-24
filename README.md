@@ -14,20 +14,9 @@
 `npm install vue-quick-loadmore -S`
 
 ```
-// 推荐引入方式
-// 使用vue-cli webpack时在main.js中引入
+// 引入方式
 import Vue from 'vue';
 import VueQuickLoadmore from 'vue-quick-loadmore';
-
-Vue.use(VueQuickLoadmore)
-```
-```
-// 不推荐引用方式
-// 未使用webpack时直接引用打包之后的版本，不推荐使用，推荐建议使用vue-cli的webpack方式进行打包处理
-import Vue from 'vue';
-// 注意引用的是 vue-quick-loadmore/dist下的index.js
-import VueQuickLoadmore from 'vue-quick-loadmore/dist/index.js';
-import 'vue-quick-loadmore/dist/index.css';  // 引入插件相关的css
 
 Vue.use(VueQuickLoadmore)
 ```
@@ -192,6 +181,7 @@ ref.setScroolTop(y)|Function|设置滚动距离|具体见示例代码
 ---
 版本号|说明|
 :--:|:--:|
+1.0.0|更换打包方式
 0.0.6|修复下拉误点击bug
 0.0.5|更新文档
 0.0.4|解决命令行报错问题

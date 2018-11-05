@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/duyanpeng/vue-simple-picker.svg?branch=master)](https://travis-ci.org/duyanpeng/vue-simple-picker)
 ![Read the Docs](https://img.shields.io/readthedocs/pip.svg)
 
-基于vue的移动端下拉刷新上拉无限滚动加载的高度定制化插件
+基于vue的移动端下拉刷新上拉无限滚动加载支持自定义文案自定义gif图的插件
 
 默认样式：可自定义更改添加loading图,自定义修改文案
 

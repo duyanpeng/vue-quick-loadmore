@@ -70,7 +70,6 @@
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
-    "v": "^0.3.0",
     "vue": "^2.5.17",
     "vue-template-compiler": "^2.5.17"
   },

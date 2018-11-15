@@ -31,12 +31,12 @@ const BOTTOMSTATUS = {
 };
 export default {
   props: {
-    // 禁止上拉刷新
+    // 禁止下拉刷新
     disableTop: {
       type: Boolean,
       default: false
     },
-    // 上拉移动比例
+    // 下拉移动比例
     distanceIndex: {
       type: Number,
       default: 2
@@ -46,12 +46,12 @@ export default {
       type: Number,
       default: 50
     },
-    // 上拉距离触发值
+    // 下拉距离触发值
     topDistance: {
       type: Number,
       default: 100
     },
-    // 上拉触发方法
+    // 下拉触发方法
     topMethod: {
       type: Function,
       default() {
@@ -60,7 +60,7 @@ export default {
         };
       }
     },
-    // 上拉刷新状态改变
+    // 下拉刷新状态改变
     topStatusChange: {
       type: Function,
       default() {
@@ -70,24 +70,24 @@ export default {
       }
     },
 
-    // 禁止下拉加载
+    // 禁止上拉加载
     disableBottom: {
       type: Boolean,
       default: false
     },
-    // 触发下拉加载距离
+    // 触发上拉无限滚动距离
     bottomDistance: {
       type: Number,
       default: 10
     },
-    // 下拉加载方法
+    // 上拉加载方法
     bottomMethod: {
       type: Function,
       default() {
         return function() {};
       }
     },
-    // 下拉刷新状态改变
+    // 上拉刷新状态改变
     bottomStatusChange: {
       type: Function,
       default() {
@@ -271,14 +271,14 @@ export default {
         this.endScreenY = 0;
       }
     },
-    // 上拉数据加载完
+    // 下拉数据加载完
     onTopLoaded() {
       this.transformStyle(this.$refs.content, 0, true);
       this.topStatus = TOPSTATUS.wait;
       this.startScreenY = 0;
       this.endScreenY = 0;
     },
-    // 下拉数据加载完
+    // 上拉数据加载完
     onBottomLoaded(flag = true) {
       if (flag) {
         this.bottomStatus = BOTTOMSTATUS.wait;

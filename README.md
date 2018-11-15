@@ -1,5 +1,5 @@
 # vue-quick-loadmore
-[![Build Status](https://travis-ci.org/duyanpeng/vue-simple-picker.svg?branch=master)](https://travis-ci.org/duyanpeng/vue-simple-picker)
+[![Build Status](https://travis-ci.com/duyanpeng/vue-quick-loadmore.svg?branch=master)](https://travis-ci.org/duyanpeng/vue-quick-loadmore)
 ![Read the Docs](https://img.shields.io/readthedocs/pip.svg)
 
 基于vue的移动端下拉刷新上拉无限滚动加载支持自定义文案自定义gif图的插件

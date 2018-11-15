@@ -16,7 +16,7 @@ module.exports = function (config) {
 
     reporters: ['spec','coverage'],
 
-    browsers: ['Chrome'],
+    browsers: ['ChromeHeadless'],
     coverageReporter: {
         dir: './coverage',
         reporters: [

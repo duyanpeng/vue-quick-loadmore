@@ -142,7 +142,7 @@ params|type|description|note
 v-bind:disableTop|Boolean|can't pull-down|default:false
 v-bind:distanceIndex|Number|scale distance|default:2
 v-bind:topLoadingDistance|Number|loading distance|default：50
-v-bind:topDistance|Number|pull-down open distance|默认:100
+v-bind:topDistance|Number|pull-down open distance|default:100
 v-on:topMethod|Function|pull-down methods|
 v-on:topStatusChange|Function|pull-down status change|look for example
 ref.onTopLoaded|Function|complete pull-down|use ref api

@@ -2,9 +2,9 @@
 [![Build Status](https://travis-ci.com/duyanpeng/vue-quick-loadmore.svg?branch=master)](https://travis-ci.org/duyanpeng/vue-quick-loadmore)
 ![Read the Docs](https://img.shields.io/readthedocs/pip.svg)
 
-基于vue的移动端下拉刷新上拉无限滚动加载支持自定义文案自定义loading图的插件
+vue移动端下拉刷新上拉无限滚动加载插件，支持更换loading图片，保存设置滚动距离等。
 
-默认样式：可自定义更改添加loading图,自定义修改文案
+默认样式如下，可根据状态更换loading图片或提示文案。
 
 ![xiaoguozhanshi](./static/loadmoregif.gif)
 
@@ -169,7 +169,7 @@ ref.setScroolTop(y)|Function|设置滚动距离|具体见示例代码
 
 ```html
 <template slot="top">
-    <div>根据topStatusChange返回的状态,渲染下拉刷新不同阶段的样式</div>
+    <div>根据topStatusChange返回的状态,设置topLoadingDistance高度,通过margin-top:负高度定位图片,渲染下拉刷新不同阶段的样式</div>
 </template>    
 <template slot="bottom">
     <div>根据bottomStatusChange返回的状态,渲染上拉加载不同阶段的样式</div>

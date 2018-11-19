@@ -2,11 +2,11 @@
 [![Build Status](https://travis-ci.com/duyanpeng/vue-quick-loadmore.svg?branch=master)](https://travis-ci.org/duyanpeng/vue-quick-loadmore)
 ![Read the Docs](https://img.shields.io/readthedocs/pip.svg)
 
-A pull-down refresh and pull-up infinite scroll component for Vue.js.
+A pull-down refresh and pull-up infinite scroll component for Vue.js,support to replace loading images, save and settings scrolling distance and so on
 
 [zh-CN中文文档](https://github.com/duyanpeng/vue-quick-loadmore/blob/master/README.zh-CN.md)
 
-default style：can change loading picture
+The default style is as follows, you can change the loading picture or text according to the status.
 
 ![xiaoguozhanshi](./static/loadmoregif.gif)
 
@@ -28,7 +28,8 @@ Vue.use(VueQuickLoadmore)
 ```html
 <template>
     <div id="app">
-    <!-- Be careful：quick-loadmore's parent div (example:#app) must fixed height and overflow:hidden -->
+    <!-- Note: quick-loadmore requires an outer wrapper (this example #app)
+     The height is fixed and overflow: hidden, and the height of the internal data of quick-loadmore is greater than the      height of the package container.To trigger the pull-load function of quick-loadmore -->
         <quick-loadmore :top-method="handleTop" ref="vueLoad" 
                         :top-status-change="handleStatusChange" 
                         :bottom-method="handleBottom" 
@@ -47,16 +48,16 @@ export default {
       dataList: [1, 2, 3, 4, 5]
     };
   },
-  // record scroll distance -use keep-alive
+  // Implement the go to the details page to return to the list location function - with keep-alive
   beforeRouteLeave(to, from, next) {
     // if enter detail
     if (to.name === "MessageDetail") {
-        // scroll distance
+        // Get scrolling distance
       let scrollTop = this.$refs.vueLoad.getScrollTop();
-      // store
+      // Setting the cache
       sessionStorage.setItem("messageScrollTop", scrollTop);
     } else {
-      // remore store  
+      // remore the cache  
       sessionStorage.removeItem("messageScrollTop");
     }
     next();
@@ -109,6 +110,7 @@ export default {
       setTimeout(() => {
         this.dataList.push(1, 2, 3);
         // have more data ? false: this.$refs.vueLoad.onBottomLoaded(false))
+        // scroll to bottom
         this.$refs.vueLoad.onBottomLoaded();
       }, 1000);
     }
@@ -139,22 +141,22 @@ html,body,#app{
 ---
 params|type|description|note
 :--:|:--:|:--:|:--:
-v-bind:disableTop|Boolean|can't pull-down|default:false
-v-bind:distanceIndex|Number|scale distance|default:2
-v-bind:topLoadingDistance|Number|loading distance|default：50
-v-bind:topDistance|Number|pull-down open distance|default:100
-v-on:topMethod|Function|pull-down methods|
-v-on:topStatusChange|Function|pull-down status change|look for example
-ref.onTopLoaded|Function|complete pull-down|use ref api
+v-bind:disableTop|Boolean|Disable pull-down refresh|default:false
+v-bind:distanceIndex|Number|Scrolling ratio|default:2
+v-bind:topLoadingDistance|Number|Loading distance|default：50
+v-bind:topDistance|Number|Pull-down refresh trigger value|default:100
+v-on:topMethod|Function|Pull-down refresh trigger method|
+v-on:topStatusChange|Function|Pull-down status change|look for example
+ref.onTopLoaded|Function|Pull-down complete|use ref api
 ---
 ### Pull-up options:
 params|type|description|note
 :--:|:--:|:--:|:--:
-v-bind:disableBttom|Boolean|can't pull-up|default:false
-v-bind:bottomDistance|Number|loading distance|default:10
-v-on:bottomMethod|Function|pull-up methods|
-v-on:bottomStatusChange|Function|pull-up status change|look for example
-ref.onBottomLoaded(boolean = true)|Function|complete pull-up|use ref api
+v-bind:disableBttom|Boolean|Disable pull-up|default:false
+v-bind:bottomDistance|Number|Loading distance|default:10
+v-on:bottomMethod|Function|Pull-up trigger method|
+v-on:bottomStatusChange|Function|Pull-up status change|look for example
+ref.onBottomLoaded(boolean = true)|Function|Pull-up complete|use ref api
 ---
 ### Other options:
 params|type|description|note

@@ -145,8 +145,8 @@ v-bind:disableTop|Boolean|Disable pull-down refresh|default:false
 v-bind:distanceIndex|Number|Scrolling ratio|default:2
 v-bind:topLoadingDistance|Number|Loading distance|default：50
 v-bind:topDistance|Number|Pull-down refresh trigger value|default:100
-v-on:topMethod|Function|Pull-down refresh trigger method|
-v-on:topStatusChange|Function|Pull-down status change|look for example
+v-bind:topMethod|Function|Pull-down refresh trigger method|
+v-bind:topStatusChange|Function|Pull-down status change|look for example
 ref.onTopLoaded|Function|Pull-down complete|use ref api
 ---
 ### Pull-up options:
@@ -154,8 +154,9 @@ params|type|description|note
 :--:|:--:|:--:|:--:
 v-bind:disableBttom|Boolean|Disable pull-up|default:false
 v-bind:bottomDistance|Number|Loading distance|default:10
-v-on:bottomMethod|Function|Pull-up trigger method|
-v-on:bottomStatusChange|Function|Pull-up status change|look for example
+v-bind:bottomMethod|Function|Pull-up trigger method|
+v-bind:bottomStatusChange|Function|Pull-up status change|look for example
+v-bind:eventScroll|Function|Scroll event callback|Used to listen for scroll events
 ref.onBottomLoaded(boolean = true)|Function|Pull-up complete|use ref api
 ---
 ### Other options:

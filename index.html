@@ -24,11 +24,9 @@
 </head>
 <body>
     <div id="app">
-        <quick-loadmore :top-method="handleTop" ref="vueLoad" :top-status-change="handleStatusChange" :bottom-method="handleBottom" :bottom-status-change="handleBottomStatusChange" :disable-top="false" :disable-bottom="false">
+        <quick-loadmore :top-method="handleTop" ref="vueLoad" :top-status-change="handleStatusChange" :bottom-method="handleBottom" :bottom-status-change="handleBottomStatusChange" :disable-top="false" :disable-bottom="false" :event-scroll="handleScroll">
             <div class="item" v-for="(item,index) in dataList" :key="index">{{index}}</div>
         </quick-loadmore>
     </div>
-    
-    <script src="./src/app.js"></script>
 </body>
 </html>

@@ -146,8 +146,8 @@ v-bind:disableTop|Boolean|禁止下拉刷新|默认:false
 v-bind:distanceIndex|Number|手指滑动与页面滑动比例|默认:2
 v-bind:topLoadingDistance|Number|loading状态时页面距顶部距离|默认：50
 v-bind:topDistance|Number|下拉刷新触发值|默认:100
-v-on:topMethod|Function|下拉刷新触发方法|
-v-on:topStatusChange|Function|下拉刷新状态改变回调|四种状态具体见示例代码
+v-bind:topMethod|Function|下拉刷新触发方法|
+v-bind:topStatusChange|Function|下拉刷新状态改变回调|四种状态具体见示例代码
 ref.onTopLoaded|Function|下拉刷新完成时调用函数|通过ref使用具体见示例代码
 ---
 ### 上拉加载配置:
@@ -155,8 +155,9 @@ ref.onTopLoaded|Function|下拉刷新完成时调用函数|通过ref使用具体
 :--:|:--:|:--:|:--:
 v-bind:disableBttom|Boolean|禁止上拉加载|默认:false
 v-bind:bottomDistance|Number|上拉加载触发值|默认:10
-v-on:bottomMethod|Function|上拉加载触发方法|
-v-on:bottomStatusChange|Function|上拉加载状态改变回调|三种状态具体见示例代码
+v-bind:bottomMethod|Function|上拉加载触发方法|
+v-bind:bottomStatusChange|Function|上拉加载状态改变回调|三种状态具体见示例代码
+v-bind:eventScroll|Function|scroll事件回调|用于监听scroll事件
 ref.onBottomLoaded(boolean = true)|Function|上拉加载完成时调用函数|通过ref使用具体见示例代码(注意：如果下拉加载之后是无更多数据状态,函数传参为false,此后不在触发上拉刷新方法,下拉刷新之后会自动开启上拉加载)
 ---
 ### 其他配置:

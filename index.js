@@ -9,6 +9,9 @@ new Vue({
         dataList:[1,2,3,4,5]
     },
     methods: {
+      handleScroll(){
+        console.log('scroll')
+      },
         handleTop() {
             // 下拉刷新
           setTimeout(() => {

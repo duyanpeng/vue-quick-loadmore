@@ -95,6 +95,10 @@ export default {
           console.log("topStatusChange");
         };
       }
+    },
+    // scroll事件
+    eventScroll:{
+      type:Function
     }
   },
   data() {
@@ -153,6 +157,7 @@ export default {
 
   methods: {
     handleScroll() {
+      this.eventScroll && this.eventScroll()
       if (this.disableBottom) {
         return;
       }

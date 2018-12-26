@@ -170,7 +170,11 @@ export default {
       if (bDistance <= this.bottomDistance) {
         this.bottomStatus = BOTTOMSTATUS.loading;
         this.$nextTick(() => {
-          this.$el.scrollTo(0, this.$el.scrollHeight);
+          try{
+            this.$el.scrollTo(0, this.$el.scrollHeight);
+          }catch(e){
+
+          }
           // this.$el.scrollTop = this.$el.scrollHeight
         });
         this.bottomMethod();

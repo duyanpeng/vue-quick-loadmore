@@ -177,6 +177,4 @@ ref.setScroolTop(y)|Function|scroll to distance|look for example
 
 ```
 
-## Contact me
----
-QQ:215028726
+

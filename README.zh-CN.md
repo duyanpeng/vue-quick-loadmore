@@ -1,6 +1,7 @@
 # vue-quick-loadmore
 [![Build Status](https://travis-ci.com/duyanpeng/vue-quick-loadmore.svg?branch=master)](https://travis-ci.org/duyanpeng/vue-quick-loadmore)
 ![Read the Docs](https://img.shields.io/readthedocs/pip.svg)
+[![](https://data.jsdelivr.com/v1/package/npm/vue-quick-loadmore/badge)](https://www.jsdelivr.com/package/npm/vue-quick-loadmore)
 
 vue移动端下拉刷新上拉无限滚动加载插件，支持更换loading图片，保存设置滚动距离等。
 
@@ -137,6 +138,20 @@ html,body,#app{
     overflow: hidden;
 }
 ```
+```html
+<!-- script标签引入方式，记得先引入vue.js，文件也可直接复制/dist/main.js -->
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue-quick-loadmore/dist/main.min.js"></script>
+
+<script>
+Vue.use(quickLoadmore)
+var vm = new Vue()
+</script>
+
+
+```
 
 ### 下拉刷新配置
 ---
@@ -182,6 +197,7 @@ ref.setScroolTop(y)|Function|设置滚动距离|具体见示例代码
 ---
 版本号|说明|
 :--:|:--:|
+1.0.3|增加script标签直接引入方式使用
 1.0.0|更换打包方式
 0.0.6|修复下拉误点击bug
 0.0.5|更新文档

@@ -192,6 +192,8 @@ ref.setScroolTop(y)|Function|设置滚动距离|具体见示例代码
 </template>   
 
 ```
+## 提示
+更好用的loadmore组件,及更多vue移动端组件，欢迎使用： [garen-ui](https://duyanpeng.github.io/garen/)
 
 ## 版本更新说明
 ---

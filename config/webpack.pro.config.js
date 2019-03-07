@@ -10,7 +10,7 @@ module.exports = WebpackMerge(WebpackBaseConfig,{
     output:{
         path: path.resolve(__dirname, '../dist'),
         filename: '[name].js',
-        library:'quickLoadmore',
+        library:'GarenLoadmore',
         libraryTarget:'umd',
         libraryExport: 'default'
     },

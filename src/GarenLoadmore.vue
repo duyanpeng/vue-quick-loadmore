@@ -1,15 +1,14 @@
-<!--  -->
 <template>
-  <div class="vsim-load" @scroll.passive="handleScroll" :style="{overflow:bottomOverflow}">
-    <div class="vsim-load-content" ref="content">
+  <div class="garen-loadmore" @scroll.passive="handleScroll" :style="{overflow:bottomOverflow}">
+    <div class="garen-loadmore-content" ref="content">
       <slot name="top">
-        <div class="vsim-load-header">
+        <div class="garen-loadmore-header">
           <div>{{topText}}</div>
         </div>
       </slot>
       <slot></slot>
       <slot name="bottom">
-        <div class="vsim-load-footer">
+        <div class="garen-loadmore-footer" v-if="!disableBottom" @click="onBottomErrorClick">
           <div>{{bottomText}}</div>
         </div>
       </slot>
@@ -19,17 +18,20 @@
 
 <script>
 const TOPSTATUS = {
-  wait: "wait",
-  pulling: "pulling",
-  limit: "limit",
-  loading: "loading"
+  wait: "wait", // 等待
+  pulling: "pulling", // 下拉
+  limit: "limit", // 超过触发值
+  loading: "loading", // 正在加载
+  complete: "complete" // 刷新完成
 };
 const BOTTOMSTATUS = {
-  wait: "wait",
-  loading: "loading",
-  nodata: "nodata"
+  wait: "wait", // 等待
+  loading: "loading", // 正在加载
+  nodata: "nodata", // 暂无数据
+  error: "error" // 错误
 };
 export default {
+  name:'Loadmore',
   props: {
     // 禁止下拉刷新
     disableTop: {
@@ -51,22 +53,11 @@ export default {
       type: Number,
       default: 100
     },
-    // 下拉触发方法
-    topMethod: {
-      type: Function,
+    // 下拉刷新状态提示
+    topChangeText: {
+      type: Object,
       default() {
-        return function() {
-          console.log("topmethod");
-        };
-      }
-    },
-    // 下拉刷新状态改变
-    topStatusChange: {
-      type: Function,
-      default() {
-        return function() {
-          console.log("topStatusChange");
-        };
+        return {};
       }
     },
 
@@ -80,25 +71,16 @@ export default {
       type: Number,
       default: 10
     },
-    // 上拉加载方法
-    bottomMethod: {
-      type: Function,
+    // 上拉加载状态提示
+    bottomChangeText: {
+      type: Object,
       default() {
-        return function() {};
-      }
-    },
-    // 上拉刷新状态改变
-    bottomStatusChange: {
-      type: Function,
-      default() {
-        return function() {
-          console.log("topStatusChange");
-        };
+        return {};
       }
     },
     // scroll事件
-    eventScroll:{
-      type:Function
+    eventScroll: {
+      type: Function
     }
   },
   data() {
@@ -106,25 +88,26 @@ export default {
       startPositionTop: null,
       startScreenY: 0,
       endScreenY: 0,
-      topStatus: TOPSTATUS.wait, // 'wait'等待 , 'pulling'下拉,'limit'超过topDistance触发,'loading'正在loading
+      topStatus: TOPSTATUS.wait,
       bottomOverflow: "auto",
       bottomStatus: BOTTOMSTATUS.wait
     };
   },
-
   components: {},
-
   computed: {
     topText() {
       switch (this.topStatus) {
         case TOPSTATUS.pulling:
-          return "下拉刷新";
+          return this.topChangeText.pulling || "下拉刷新";
           break;
         case TOPSTATUS.limit:
-          return "释放刷新";
+          return this.topChangeText.limit || "释放刷新";
           break;
         case TOPSTATUS.loading:
-          return "正在刷新...";
+          return this.topChangeText.loading || "正在刷新...";
+          break;
+        case TOPSTATUS.complete:
+          return this.topChangeText.complete || "";
           break;
         default:
           return "";
@@ -133,10 +116,13 @@ export default {
     bottomText() {
       switch (this.bottomStatus) {
         case BOTTOMSTATUS.loading:
-          return "正在加载更多...";
+          return this.bottomChangeText.loading || "正在加载更多...";
           break;
         case BOTTOMSTATUS.nodata:
-          return "暂无更多数据";
+          return this.bottomChangeText.nodata || "暂无更多数据";
+          break;
+        case BOTTOMSTATUS.error:
+          return this.bottomChangeText.error || "请求数据出错，请点击重试";
           break;
         default:
           return "";
@@ -145,39 +131,38 @@ export default {
   },
   watch: {
     topStatus(next) {
-      this.topStatusChange(next);
+      // 下拉刷新状态改变
+      this.$emit("top-status-change", next);
     },
     bottomStatus(next) {
-      this.bottomStatusChange(next);
+      // 上拉加载状态改变
+      this.$emit("bottom-status-change", next);
     }
   },
   mounted() {
     this.init();
   },
-
   methods: {
     handleScroll() {
-      this.eventScroll && this.eventScroll()
+      this.eventScroll && this.eventScroll();
       if (this.disableBottom) {
         return;
       }
       if (this.bottomStatus !== BOTTOMSTATUS.wait) {
         return;
       }
-
       let bDistance =
         this.$el.scrollHeight - this.$el.scrollTop - this.$el.clientHeight;
       if (bDistance <= this.bottomDistance) {
         this.bottomStatus = BOTTOMSTATUS.loading;
         this.$nextTick(() => {
-          try{
+          // 移动端某些浏览器初始化控制台报错，不影响使用
+          try {
             this.$el.scrollTo(0, this.$el.scrollHeight);
-          }catch(e){
-
-          }
+          } catch (e) {}
           // this.$el.scrollTop = this.$el.scrollHeight
         });
-        this.bottomMethod();
+        this.$emit('bottom-method');
       }
     },
     // 获得滚动距离
@@ -211,7 +196,6 @@ export default {
       if (this.topStatus === TOPSTATUS.loading) {
         return;
       }
-
       let screenY = e.touches[0].screenY;
       this.startScreenY = screenY;
     },
@@ -225,23 +209,19 @@ export default {
       if (this.topStatus === "loading") {
         return;
       }
-
       let screenY = e.touches[0].screenY;
-      this.endScreenY = screenY;
       let moveDistance = (screenY - this.startScreenY) / this.distanceIndex;
       if (
         this.$refs.content.getBoundingClientRect().top > this.startPositionTop
       ) {
         this.topStatus = TOPSTATUS.pulling;
       }
-
       if (moveDistance >= this.topDistance) {
         this.topStatus = TOPSTATUS.limit;
       }
       if (moveDistance > 0) {
         e.preventDefault();
         e.stopPropagation();
-
         this.transformStyle(this.$refs.content, moveDistance);
       }
     },
@@ -263,13 +243,16 @@ export default {
         return;
       }
 
+      let screenY = e.changedTouches[0].screenY;
+
       if (
-        (this.endScreenY - this.startScreenY) / this.distanceIndex >=
+        (screenY - this.startScreenY) / this.distanceIndex >=
         this.topDistance
       ) {
         this.transformStyle(this.$refs.content, this.topLoadingDistance, true);
         this.topStatus = TOPSTATUS.loading;
-        this.topMethod();
+        // 下拉刷新触发方法
+        this.$emit("top-method");
         if (!this.disableBottom) {
           this.bottomStatus = BOTTOMSTATUS.wait;
         }
@@ -277,15 +260,17 @@ export default {
         this.topStatus = TOPSTATUS.wait;
         this.transformStyle(this.$refs.content, 0);
         this.startScreenY = 0;
-        this.endScreenY = 0;
       }
     },
+    // TODO:完成时间1s
     // 下拉数据加载完
-    onTopLoaded() {
-      this.transformStyle(this.$refs.content, 0, true);
-      this.topStatus = TOPSTATUS.wait;
-      this.startScreenY = 0;
-      this.endScreenY = 0;
+    onTopLoaded(time = 0) {
+      setTimeout(()=>{
+        this.transformStyle(this.$refs.content, 0, true);
+        this.startScreenY = 0;
+      },time)
+      this.topStatus = TOPSTATUS.complete;
+      
     },
     // 上拉数据加载完
     onBottomLoaded(flag = true) {
@@ -293,6 +278,17 @@ export default {
         this.bottomStatus = BOTTOMSTATUS.wait;
       } else {
         this.bottomStatus = BOTTOMSTATUS.nodata;
+      }
+    },
+    // 上拉数据出错
+    onBottomError() {
+      this.bottomStatus = BOTTOMSTATUS.error;
+    },
+    // 出错时，点击重新加载数据
+    onBottomErrorClick() {
+      if (this.bottomStatus === BOTTOMSTATUS.error) {
+        this.bottomStatus = BOTTOMSTATUS.loading;
+        this.$emit("bottom-error-click");
       }
     },
     // 动画
@@ -309,13 +305,12 @@ export default {
 };
 </script>
 <style scoped>
-.vsim-load {
+.garen-loadmore {
   height: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
-
-.vsim-load-header {
+.garen-loadmore-header {
   margin-top: -50px;
   height: 50px;
   line-height: 50px;
@@ -324,8 +319,7 @@ export default {
   color: #666666;
   letter-spacing: -0.31px;
 }
-
-.vsim-load-footer {
+.garen-loadmore-footer {
   height: 50px;
   line-height: 50px;
   text-align: center;

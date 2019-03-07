@@ -1,9 +1,8 @@
 {
-  "name": "vue-quick-loadmore",
-  "version": "1.0.3",
+  "name": "garen-loadmore",
+  "version": "0.1.0",
   "description": "基于vue的移动端下拉刷新上拉无限滚动加载支持自定义文案自定义gif图的插件",
   "main": "dist/main.js",
-  "module": "src/index.js",
   "scripts": {
     "test:mocha": "mocha-webpack --webpack-config config/webpack.test.config.js --require test/setup.js test/**/*.spec.js",
     "test": "cross-env BABEL_ENV=test karma start --single-run",
@@ -59,6 +58,7 @@
     "mocha-webpack": "^2.0.0-beta.0",
     "postcss": "^7.0.2",
     "postcss-loader": "^3.0.0",
+    "sinon": "^7.2.7",
     "sinon-chai": "^3.2.0",
     "style-loader": "^0.22.1",
     "vue-loader": "^15.3.0",

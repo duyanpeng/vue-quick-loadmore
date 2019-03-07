@@ -1,8 +1,8 @@
 
-import VueQuickLoadmore from './VueQuickLoadmore.vue';
+import GarenLoadmore from './GarenLoadmore.vue';
 
 export default {
     install(Vue){
-        Vue.component('quick-loadmore', VueQuickLoadmore)
+        Vue.component('garen-loadmore', GarenLoadmore)
     }
 }

@@ -1,7 +1,7 @@
 # garen-loadmore
 [![Build Status](https://travis-ci.com/duyanpeng/vue-quick-loadmore.svg?branch=master)](https://travis-ci.org/duyanpeng/vue-quick-loadmore)
 ![Read the Docs](https://img.shields.io/readthedocs/pip.svg)
-[![](https://data.jsdelivr.com/v1/package/npm/vue-quick-loadmore/badge)](https://www.jsdelivr.com/package/npm/vue-quick-loadmore)
+[![](https://data.jsdelivr.com/v1/package/npm/garen-loadmore/badge)](https://www.jsdelivr.com/package/npm/vue-quick-loadmore)
 
 vue移动端下拉刷新上拉无限滚动加载插件，支持更换loading图片，保存设置滚动距离等。
 

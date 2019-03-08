@@ -1,4 +1,4 @@
-# vue-quick-loadmore
+# garen-loadmore
 [![Build Status](https://travis-ci.com/duyanpeng/vue-quick-loadmore.svg?branch=master)](https://travis-ci.org/duyanpeng/vue-quick-loadmore)
 ![Read the Docs](https://img.shields.io/readthedocs/pip.svg)
 [![](https://data.jsdelivr.com/v1/package/npm/vue-quick-loadmore/badge)](https://www.jsdelivr.com/package/npm/vue-quick-loadmore)

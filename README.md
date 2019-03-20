@@ -117,7 +117,7 @@ export default {
       setTimeout(() => {
          // 模拟数据更新
         this.dataList = [1, 2, 3, 4, 5];
-        // 数据跟新完调用该方法使garen-loadmore滚到顶部，参数是完成状态等待时间ms
+        // 数据跟新完调用该方法使garen-loadmore滚到顶部，参数是完成状态等待时间ms
         this.$refs.vueLoad.onTopLoaded(0);
       }, 1000);
     },

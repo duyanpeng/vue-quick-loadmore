@@ -1,0 +1,23 @@
+{
+    "presets": [
+        ["env",
+            {
+        "target": {
+          "browsers": [ "iOS >= 7","Android >= 4"
+                    ]
+                }
+            }
+        ]
+    ],
+    "plugins": [
+        [
+          "transform-runtime", 
+          {
+            "helpers": false,
+            "polyfill": false,
+            "regenerator": true,
+            "moduleName": "babel-runtime"
+          }
+        ]
+    ]    
+}

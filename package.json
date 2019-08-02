@@ -1,6 +1,6 @@
 {
   "name": "garen-loadmore",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "基于vue的移动端下拉刷新上拉无限滚动加载支持自定义文案自定义gif图的插件",
   "main": "dist/main.js",
   "scripts": {
@@ -74,10 +74,7 @@
     "vue-template-compiler": "^2.5.17"
   },
   "browserslist": [
-    "> 1%",
     "iOS >= 7",
-    "Android >= 4",
-    "last 2 versions",
-    "not ie <= 8"
+    "Android >= 4"
   ]
 }
